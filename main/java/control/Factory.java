@@ -6,6 +6,7 @@ import java.util.Scanner;
 import model.Block;
 
 public class Factory {
+	private String name;
 	private int time;
 	private int priority;
 	private int numBlocks;
@@ -24,6 +25,11 @@ public class Factory {
 		numBlocks = sc.nextInt();
 
 		for (int i = 0; i < numBlocks; i++) {
+			
+			System.out.println("Enter " + counter + " block's name: ");
+			System.out.println();
+			name = sc.next();
+			
 			System.out.println("Enter " + counter + " block's time: ");
 			System.out.println();
 			time = sc.nextInt();
@@ -31,11 +37,14 @@ public class Factory {
 			while (priority > 10 || priority <= 0) {
 				System.out.println("Enter " + counter + " block's priority(from 1 to 10): ");
 				System.out.println();
-				priority = sc.nextInt();
+ 				priority = sc.nextInt();
 			}
 
-			blocks.add(new Block(time, priority));
+			blocks.add(new Block(name, time, priority));
 			counter++;
+			name = "";
+			time = 0;
+			priority = 0;
 		}
 	}
 }

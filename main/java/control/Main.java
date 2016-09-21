@@ -13,6 +13,8 @@ public class Main {
 		
 		for (Block i : blocks)
 			System.out.println(i);
+		
+		Executor.findMinPath(blocks);
 	}
 	
 }
