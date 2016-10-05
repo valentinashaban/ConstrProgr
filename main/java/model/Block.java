@@ -1,18 +1,20 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Block {
 	private String name;
 	private int time;
-	private int priority;
 	private boolean finished;
+	private Constraint cons;
 	
 	public Block() {}
 
-	public Block(String name, int time, int priority) {
+	public Block(String name, int time, int num, ArrayList<String> consList) {
 		this.name = name;
 		this.time = time;
-		this.priority = priority;
 		this.finished = false;
+		cons = new Constraint(num, consList);
 	}
 	
 	public String getName() {
@@ -31,14 +33,6 @@ public class Block {
 		this.time = time;
 	}
 
-	public int getPriority() {
-		return priority;
-	}
-
-	public void setPriority(int priority) {
-		this.priority = priority;
-	}
-
 	public boolean isFinished() {
 		return finished;
 	}
@@ -47,9 +41,17 @@ public class Block {
 		this.finished = finished;
 	}
 
+	public Constraint getCons() {
+		return cons;
+	}
+
+	public void setCons(Constraint cons) {
+		this.cons = cons;
+	}
+
 	@Override
 	public String toString() {
-		return "Block [name=" + name + ", time=" + time + ", priority=" + priority + ", finished=" + finished + "]";
+		return "Block [name=" + name + ", time=" + time + ", cons=" + cons + "]";
 	}
 	
 }

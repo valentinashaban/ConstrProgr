@@ -8,11 +8,11 @@ import model.Block;
 public class Factory {
 	private String name;
 	private int time;
-	private int priority;
 	private int numBlocks;
+	private int numTops;
+	private ArrayList<String> cons = new ArrayList<>();
 
-	public Factory() {
-	}
+	public Factory() {}
 
 	public void createBlocks(ArrayList<Block> blocks) {
 		int counter = 1;
@@ -34,17 +34,22 @@ public class Factory {
 			System.out.println();
 			time = sc.nextInt();
 
-			while (priority > 10 || priority <= 0) {
-				System.out.println("Enter " + counter + " block's priority(from 1 to 10): ");
+			System.out.println("Enter the number of previous blocks: ");
+			System.out.println();
+			numTops = sc.nextInt();
+			
+			for (int j = 0; j < numTops; j++) {
+				System.out.println("Enter the names of previous blocks: ");
 				System.out.println();
- 				priority = sc.nextInt();
+				cons.add(sc.next());
 			}
-
-			blocks.add(new Block(name, time, priority));
+			
+			blocks.add(new Block(name, time, numTops, cons));
 			counter++;
 			name = "";
 			time = 0;
-			priority = 0;
+			numTops = 0;
+			cons.removeAll(cons);
 		}
 	}
 }
