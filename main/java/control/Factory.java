@@ -6,6 +6,7 @@ import java.util.Scanner;
 import model.Block;
 
 public class Factory {
+	
 	private String name;
 	private int time;
 	private int numBlocks;
